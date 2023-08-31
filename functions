@@ -4,10 +4,11 @@ const functionContainerVariable = function() {
 
 functionContainerVariable(); //36
 
-//immediately invoked function.
+//immediately invoked arrow function.
 const result = (() => {
     return 20;
 })();
+
 //another immediately invoked function
 (function someFuntion(){
     console.log('hello');
