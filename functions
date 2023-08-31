@@ -8,6 +8,10 @@ functionContainerVariable(); //36
 const result = (() => {
     return 20;
 })();
+//another immediately invoked function
+(function someFuntion(){
+    console.log('hello');
+})()
 
 //a proper function
 function myFunction() {
