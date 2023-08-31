@@ -3,3 +3,8 @@ const functionContainerVariable = function() {
 }
 
 functionContainerVariable(); //36
+
+//immediately invoked function.
+const result = (() => {
+    return 20;
+})();
