@@ -22,3 +22,14 @@ function myFunction(someString) {
 typeof myFunction; //'function'
 
 myFunction('hello there'); //'hello there'
+
+const aliasToFunction=myFunction;
+
+aliasToFunction('hello there'); //'hello there'
+
+const myObj = {
+    prop1: 50,
+    prop2: myFunction
+}
+
+myObj.myFunction()
