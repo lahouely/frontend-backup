@@ -33,3 +33,5 @@ const myObj = {
 }
 
 myObj.myFunction()
+
+multiply = (a, b) => a * b;
