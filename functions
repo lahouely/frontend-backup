@@ -1,0 +1,5 @@
+const functionContainerVariable = function() {
+    return 36;
+}
+
+functionContainerVariable(); //36
