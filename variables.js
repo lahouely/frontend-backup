@@ -11,7 +11,10 @@ typeof var1;//number
 typeof var3;//string
 typeof var4;//boolean
 
-const v1 = "13";
+const v1 = "13";//avoid double quotes
+const v4 = '13';//prefer single quotes
 const v2 = 11;
 console.log(v1+v2);
 console.log(Number(v1)+v2);
+
+clear()
