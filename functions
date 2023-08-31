@@ -14,10 +14,10 @@ const result = (() => {
 })()
 
 //a proper function
-function myFunction() {
-    console.log('hello there');
+function myFunction(someString) {
+    console.log(someString);
 }
 
 typeof myFunction; //'function'
 
-myFunction(); //'hello there'
+myFunction('hello there'); //'hello there'
