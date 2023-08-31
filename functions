@@ -8,3 +8,12 @@ functionContainerVariable(); //36
 const result = (() => {
     return 20;
 })();
+
+//a proper function
+function myFunction() {
+    console.log('hello there');
+}
+
+typeof myFunction; //'function'
+
+myFunction(); //'hello there'
