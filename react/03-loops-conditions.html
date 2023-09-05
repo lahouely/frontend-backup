@@ -38,7 +38,11 @@ let App = function ShoppingList() {
   );
 
   return (
+    <>
     <ul>{listItems}</ul>
+    <br/><br/><br/><br/>
+    <ul>{products.map(product => <li key={product.id}>{product.title}</li>)}</ul>
+    </>
   );
 }
 
