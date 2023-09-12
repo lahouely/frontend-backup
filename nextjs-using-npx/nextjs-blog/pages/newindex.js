@@ -19,7 +19,7 @@ import CatFact from '../components/catfact';
 
 export async function getServerSideProps() {
   const allPostsData = getSortedPostsData();
-  const propsDate = new Date().toLocaleString('fr-FR',{ timeZone: 'Africa/Algiers', timeZoneName: 'shortGeneric' });
+  const propsDate = new Date().toLocaleString('en-UK',{ timeZone: 'Africa/Algiers', timeZoneName: 'shortGeneric' });
   const propsType = 'ServerSideProps';
   return {
     props: {
