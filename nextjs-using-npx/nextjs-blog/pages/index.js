@@ -14,6 +14,9 @@ export default function Home() {
         <h1 className={styles.title}>
           Read <Link href="/posts/first-post">this page!</Link>
         </h1>
+        <h1 className={styles.title}>
+          Or <Link href="/posts/newlayout-post">this better page!</Link>
+        </h1>
 
         <p className={styles.description}>
           Get started by editing <code>pages/index.js</code>
