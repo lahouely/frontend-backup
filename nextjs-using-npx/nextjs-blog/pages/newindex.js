@@ -3,6 +3,8 @@ import NewLayout, { siteTitle } from '../components/newlayout';
 import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
 import CatFact from '../components/catfact';
+import Price from '../components/price';
+import Activity from '../components/activity';
 
 /*export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -43,6 +45,8 @@ export default function Home({ allPostsData, propsDate, propsType }) {
         <p>propsDate={propsDate}</p>
         <p>propsType={propsType}</p>
         <CatFact/>
+        <Price/>
+        <Activity/>
         <p>[Your Self Introduction]</p>
         <p>
           (This is a sample website - you’ll be building a site like this on{' '}
