@@ -5,6 +5,7 @@ import { getSortedPostsData } from '../lib/posts';
 import CatFact from '../components/catfact';
 import Price from '../components/price';
 import Activity from '../components/activity';
+import Dog from '../components/dog';
 
 /*export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -44,9 +45,11 @@ export default function Home({ allPostsData, propsDate, propsType }) {
       <section className={utilStyles.headingMd}>
         <p>propsDate={propsDate}</p>
         <p>propsType={propsType}</p>
-        <CatFact/>
+        
         <Price/>
         <Activity/>
+        <Dog/>
+        <CatFact/>
         <p>[Your Self Introduction]</p>
         <p>
           (This is a sample website - you’ll be building a site like this on{' '}
