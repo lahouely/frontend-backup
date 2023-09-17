@@ -1,12 +1,14 @@
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import NewLayout from '../../components/newlayout';
+import Head from 'next/head';
+
 
 //The curly braces { } hereunder are the Destructuring assignment
 //The destructuring assignment syntax is a JavaScript expression that makes it possible
 //to unpack values from arrays, or properties from objects, into distinct variables.
 //Here we're only reading the params key and nothing else.
 export async function getStaticProps({ params }) {
-  const postData = getPostData(params.id);
+  const postData = await getPostData(params.id);
   return {
     props: {
       postData,
@@ -25,11 +27,16 @@ export async function getStaticPaths() {
 export default function Post({ postData }) {
     return (
       <NewLayout>
+        <Head>
+            <title>{postData.title}</title>
+        </Head>
         {postData.title}
         <br />
         {postData.id}
         <br />
         {postData.date}
+        <br />
+        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </NewLayout>
     );
   }
