@@ -6,6 +6,8 @@ import CatFact from '../components/catfact';
 import Price from '../components/price';
 import Activity from '../components/activity';
 import Dog from '../components/dog';
+import Link from 'next/link';
+import YDate from '../components/ydate';
 
 /*export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -61,11 +63,11 @@ export default function Home({ allPostsData, propsDate, propsType }) {
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              {title}
+              <Link href={`/posts/${id}`}>{title}</Link>
               <br />
-              {id}
-              <br />
-              {date}
+              <small className={utilStyles.lightText}>
+                <YDate dateString={date} />
+              </small>
             </li>
           ))}
         </ul>
