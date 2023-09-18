@@ -1,135 +1,77 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import NewLayout, { siteTitle } from '../components/newlayout';
+import utilStyles from '../styles/utils.module.css';
+import { getSortedPostsData } from '../lib/posts';
+import CatFact from '../components/catfact';
+import Price from '../components/price';
+import Activity from '../components/activity';
+import Dog from '../components/dog';
 import Link from 'next/link';
+import YDate from '../components/ydate';
 
-export default function Home() {
+/*export async function getStaticProps() {
+  const allPostsData = getSortedPostsData();
+  const propsDate = new Date().toLocaleString('fr-FR',{ timeZone: 'Africa/Algiers', timeZoneName: 'shortGeneric' });
+  const propsType = 'StaticProps';
+  return {
+    props: { 
+      allPostsData,
+      propsDate,
+      propsType,
+    },
+  };
+}*/
+
+export async function getServerSideProps() {
+  const allPostsData = getSortedPostsData();
+  const propsDate = new Date().toLocaleString('en-UK',{ timeZone: 'Africa/Algiers', timeZoneName: 'shortGeneric' });
+  const propsType = 'ServerSideProps';
+  return {
+    props: {
+      allPostsData,
+      propsDate,
+      propsType,
+    },
+  };
+}
+
+
+
+export default function Home({ allPostsData, propsDate, propsType }) {
+  //console.log(allPostsData);
   return (
-    <div className={styles.container}>
+    <NewLayout home>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>{siteTitle}</title>
       </Head>
-
-      <main>
-        <h1 className={styles.title}>
-          Read <Link href="/posts/first-post">this page!</Link>
-        </h1>
-        <h1 className={styles.title}>
-          Or <Link href="/posts/newlayout-post">this better page!</Link>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing <code>pages/index.js</code>
+      <section className={utilStyles.headingMd}>
+        <p>propsDate={propsDate}</p>
+        <p>propsType={propsType}</p>
+        
+        <Price/>
+        <Activity/>
+        <Dog/>
+        <CatFact/>
+        <p>[Your Self Introduction]</p>
+        <p>
+          (This is a sample website - you’ll be building a site like this on{' '}
+          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
         </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
-        </a>
-      </footer>
-
-      <style jsx>{`
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        footer img {
-          margin-left: 0.5rem;
-        }
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-decoration: none;
-          color: inherit;
-        }
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family:
-            Menlo,
-            Monaco,
-            Lucida Console,
-            Liberation Mono,
-            DejaVu Sans Mono,
-            Bitstream Vera Sans Mono,
-            Courier New,
-            monospace;
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family:
-            -apple-system,
-            BlinkMacSystemFont,
-            Segoe UI,
-            Roboto,
-            Oxygen,
-            Ubuntu,
-            Cantarell,
-            Fira Sans,
-            Droid Sans,
-            Helvetica Neue,
-            sans-serif;
-        }
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
-    </div>
+      </section>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <ul className={utilStyles.list}>
+          {allPostsData.map(({ id, date, title }) => (
+            <li className={utilStyles.listItem} key={id}>
+              <Link href={`/posts/${id}`}>{title}</Link>
+              <br />
+              <small className={utilStyles.lightText}>
+                <YDate dateString={date} />
+              </small>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </NewLayout>
   );
 }
