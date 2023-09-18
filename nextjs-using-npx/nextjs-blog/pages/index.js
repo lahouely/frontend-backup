@@ -52,7 +52,7 @@ export default function Home({ allPostsData, propsDate, propsType }) {
         <Activity/>
         <Dog/>
         <CatFact/>
-        <p>[Your Self Introduction]</p>
+        <p>[Saha ben debbagh]</p>
         <p>
           (This is a sample website - you’ll be building a site like this on{' '}
           <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
