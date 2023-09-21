@@ -51,6 +51,8 @@ export default function Home({ allPostsData, propsDate, propsType }) {
         <Price/>
         <Activity/>
         <Dog/>
+        <Dog/>
+        <Dog/>
         <CatFact/>
         <p>[Saha ben debbagh]</p>
         <p>
